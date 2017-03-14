@@ -1,5 +1,6 @@
 package thesolocoder.com.easympg;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
@@ -36,19 +37,20 @@ public class MainActivity extends AppCompatActivity
    //     DEVICE_ID = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
     //    DEVICE_ID = md5(DEVICE_ID).toUpperCase();
 
-        adView = (AdView) this.findViewById(R.id.adView);
+        /*adView = (AdView) this.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                                            .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                                            .addTestDevice(DEVICE_ID)
                                            .build();
-        adView.loadAd(adRequest);
+        adView.loadAd(adRequest);*/
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent open_AddRecords = new Intent(MainActivity.this, FillUpView.class);
+                //open_AddRecords.putExtra("toAddToTable", String.valueOf(databaseTable));
+                startActivity(open_AddRecords);
             }
         });
 

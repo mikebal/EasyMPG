@@ -5,4 +5,13 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <!--Add fill up variables -->
+    <string name="odometer">Odometer: </string>
+    <string name="missedPreviousFillUp">Missed previous fill up:</string>
+    <string name="price">Price </string>
+    <string name="date">Date: </string>
+    <string name="fuelQuantity">Fuel quantity: </string>
+    <string name="totalCost">Total cost:</string>
+    <string name="today">Today</string>
 </resources>
