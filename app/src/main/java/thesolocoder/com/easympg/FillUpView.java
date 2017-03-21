@@ -3,6 +3,9 @@ package thesolocoder.com.easympg;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 public class FillUpView extends AppCompatActivity {
 
@@ -13,6 +16,8 @@ public class FillUpView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fillup);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        setupVariables();
     /*    SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         boolean useDarkTheme = preferences.getBoolean(PREF_DARK_THEME, false);
         if(useDarkTheme) {
@@ -27,5 +32,13 @@ public class FillUpView extends AppCompatActivity {
         }
         Bundle extras = getIntent().getExtras();
         dbTableReferenced = extras.getString("toAddToTable");*/
+    }
+
+    private void setupVariables(){
+        Spinner spinner = (Spinner) findViewById(R.id.spinnerFuelMeasurement);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.fuelMeasurementArray, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
     }
 }

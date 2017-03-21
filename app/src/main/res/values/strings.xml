@@ -14,4 +14,11 @@
     <string name="fuelQuantity">Fuel quantity: </string>
     <string name="totalCost">Total cost:</string>
     <string name="today">Today</string>
+
+    <string-array name="fuelMeasurementArray">
+        <item>Liters (L)</item>
+        <item>US Gallons (Gal)</item>
+        <item>Imperial gallon</item>
+    </string-array>
+
 </resources>
