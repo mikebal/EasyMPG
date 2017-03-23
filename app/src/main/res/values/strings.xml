@@ -11,10 +11,9 @@
     <string name="missedPreviousFillUp">Missed previous fill up:</string>
     <string name="price">Price </string>
     <string name="date">Date: </string>
-    <string name="fuelQuantity">Fuel quantity: </string>
+    <string name="fuelPrice">Fuel Price: </string>
     <string name="totalCost">Total cost:</string>
     <string name="today">Today</string>
-
     <string-array name="fuelMeasurementArray">
         <item>Liters (L)</item>
         <item>US Gallons (Gal)</item>
