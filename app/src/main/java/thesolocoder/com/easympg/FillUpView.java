@@ -1,20 +1,33 @@
 package thesolocoder.com.easympg;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.content.Context;
+import android.icu.util.TimeZone;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.format.DateFormat;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
-public class FillUpView extends AppCompatActivity {
+import java.util.Calendar;
+
+public class FillUpView extends AppCompatActivity{
 
     private static final String PREFS_NAME = "prefs";
     private static final String PREF_DARK_THEME = "dark_theme";
     private EditText _odometerInput;
+    Calendar dateSelected;
+    private Button _dateButton;
+    private DatePickerDialog datePickerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +59,39 @@ public class FillUpView extends AppCompatActivity {
         spinner.setAdapter(adapter);
         _odometerInput = (EditText) findViewById(R.id.editTextOdometer);
         setOdometerListener();
+        dateSelected = Calendar.getInstance();
+        _dateButton = (Button) findViewById(R.id.dateButton);
+        setDateTimeField();
     }
+
+    public void dateButtonClicked(View v){
+      toggleCalendarLayout();
+    }
+    private void setDateTimeField() {
+        Calendar newCalendar = dateSelected;
+        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                dateSelected.set(year, monthOfYear, dayOfMonth, 0, 0);
+                _dateButton.setText(DateFormat.format("mm/dd/yyyy",dateSelected.getTime()));
+            }
+        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        _dateButton.setText(DateFormat.format("mm/dd/yyyy",dateSelected.getTime()));
+    }
+
+
+    private void toggleCalendarLayout(){
+        LinearLayout defaultLayout = (LinearLayout) findViewById(R.id.defaultLinearLayout);
+        defaultLayout.setVisibility(View.GONE);
+        findViewById(R.id.linearLayoutDateSelector).setVisibility(View.VISIBLE);
+    }
+
+
+
+
+
+
+
+
 
     private void setOdometerListener(){
         _odometerInput.addTextChangedListener(new TextWatcher() {
@@ -95,4 +140,5 @@ public class FillUpView extends AppCompatActivity {
             }
         });
     }
+
 }

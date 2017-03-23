@@ -20,4 +20,8 @@
         <item>Imperial gallon</item>
     </string-array>
 
+    <string name="Done">Done</string>
+    <string name="Confirm">Confirm</string>
+    <string name="Cancel">Cancel</string>
+
 </resources>
