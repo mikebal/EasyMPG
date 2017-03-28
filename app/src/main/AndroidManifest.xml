@@ -27,6 +27,9 @@
         <activity android:name=".FillUpView"
             android:windowSoftInputMode="stateVisible|adjustResize"/>
 
+        <activity android:name=".VehicleInfoView"
+            android:windowSoftInputMode="stateVisible|adjustResize"/>
+
 
     </application>
 

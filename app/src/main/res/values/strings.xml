@@ -20,6 +20,13 @@
         <item>Imperial gallon</item>
     </string-array>
 
+    <!-- Vehicle Info -->
+    <string name="Recommended">Recommended</string>
+    <string name="Optional">Optional</string>
+    <string name="Make">Make:</string>
+    <string name="Model">Model:</string>
+    <string name="Year">Year:</string>
+
     <string name="Done">Done</string>
     <string name="Confirm">Confirm</string>
     <string name="Cancel">Cancel</string>

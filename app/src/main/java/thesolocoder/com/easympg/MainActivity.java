@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent open_AddRecords = new Intent(MainActivity.this, FillUpView.class);
+                Intent open_AddRecords = new Intent(MainActivity.this, VehicleInfoView.class);
                 //open_AddRecords.putExtra("toAddToTable", String.valueOf(databaseTable));
                 startActivity(open_AddRecords);
             }
