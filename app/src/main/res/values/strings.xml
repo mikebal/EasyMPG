@@ -22,7 +22,7 @@
 
     <!-- Vehicle Info -->
     <string name="Recommended">Recommended</string>
-    <string name="Optional">Optional</string>
+    <string name="Optional"><u>Optional</u></string>
     <string name="Make">Make:</string>
     <string name="Model">Model:</string>
     <string name="Year">Year:</string>
