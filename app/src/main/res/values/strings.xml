@@ -26,6 +26,9 @@
     <string name="Make">Make:</string>
     <string name="Model">Model:</string>
     <string name="Year">Year:</string>
+    <string name="NickName">Nick Name:</string>
+    <string name="OdometerUnits">Odometer Units:</string>
+    <string name="fuelInputUnits">Fuel input:</string>
 
     <string name="Done">Done</string>
     <string name="Confirm">Confirm</string>
