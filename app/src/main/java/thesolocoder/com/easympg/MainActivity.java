@@ -102,10 +102,10 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
+     if (id == R.id.nav_vehicleInfo) {
+            Intent open_AddRecords = new Intent(MainActivity.this, AddNewVehicle.class);
+            //open_AddRecords.putExtra("toAddToTable", String.valueOf(databaseTable));
+            startActivity(open_AddRecords);
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {

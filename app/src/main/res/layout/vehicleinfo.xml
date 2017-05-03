@@ -65,14 +65,14 @@
                             android:textSize="20sp" />
 
                         <EditText
-                            android:id="@+id/editTextVehicleMake1"
+                            android:id="@+id/editTextVehicleNickName"
                             android:layout_width="164dp"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="16dp"
                             android:layout_marginRight="16dp"
                             android:ems="10"
                             android:gravity="center"
-                            android:inputType="textAutoCorrect"
+                            android:inputType="textCapSentences"
                             android:maxLength="30" />
                     </LinearLayout>
 
@@ -184,7 +184,7 @@
                             android:layout_weight="1"
                             android:ems="10"
                             android:gravity="center"
-                            android:inputType="textAutoCorrect"
+                            android:inputType="textCapSentences"
                             android:maxLength="30" />
                     </LinearLayout>
 
@@ -216,7 +216,7 @@
                             android:layout_weight="1"
                             android:ems="10"
                             android:gravity="center"
-                            android:inputType="textAutoCorrect"
+                            android:inputType="textCapSentences"
                             android:maxLength="30" />
                     </LinearLayout>
 
@@ -249,7 +249,7 @@
                             android:ems="10"
                             android:gravity="center"
                             android:inputType="number"
-                            android:maxLength="3" />
+                            android:maxLength="4" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
