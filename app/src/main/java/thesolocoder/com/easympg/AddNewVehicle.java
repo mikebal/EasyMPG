@@ -22,6 +22,10 @@ public class AddNewVehicle extends VehicleInfoView{
 
     private void confirmButtonClicked1(){
         VehicleInfoStruct newVehicle = getVehicleInfo();
+        VehicleAdmin vehicleAdmin = new VehicleAdmin(getApplicationContext());
+        boolean isValid = vehicleAdmin.verifyNewVehicleIsUnique(newVehicle);
+
+        vehicleAdmin = null;
         int i = 0;
     }
 

@@ -43,6 +43,10 @@ public class VehicleInfoView extends AppCompatActivity{
     }
 
     protected VehicleInfoStruct getVehicleInfo(){
+        if(_nickName.getText().toString().equals("")){
+            String generatedNickName = _make.getText().toString() + " " + _model.getText().toString() + " " + _year.getText().toString();
+            _nickName.setText(generatedNickName);
+        }
        return new VehicleInfoStruct(UNINITIALIZED_PK,
                                     _nickName.getText().toString(),
                                     _make.getText().toString(),

@@ -1,7 +1,8 @@
 package thesolocoder.com.easympg;
 
 public class VehicleInfoStruct {
-    private int _vehiclePK = -1;
+    private static final int UNINITIALIZED_PK = -1;
+    private int _vehiclePK = UNINITIALIZED_PK;
     private String _nickName;
     private String _make;
     private String _model;
