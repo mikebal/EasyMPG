@@ -21,35 +21,35 @@ public class VehicleInfoStruct {
         _fuelUnits = fuelUnits;
     }
 
-    public int get_vehiclePK() {
+    public int getVehiclePK() {
         return _vehiclePK;
     }
 
-    public String get_nickName() {
+    public String getNickName() {
         return _nickName;
     }
 
-    public String get_make() {
+    public String getMake() {
         return _make;
     }
 
-    public String get_model() {
+    public String getModel() {
         return _model;
     }
 
-    public String get_odometerUnits() {
+    public String getOdometerUnits() {
         return _odometerUnits;
     }
 
-    public String get_fuelUnits(){
+    public String getFuelUnits(){
         return _fuelUnits;
     }
 
-    public String  get_year() {
+    public String  getYear() {
         return _year;
     }
 
-    public void set_vehiclePK(int vehiclePK){
+    public void setVehiclePK(int vehiclePK){
         _vehiclePK = vehiclePK;
     }
 }
