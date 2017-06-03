@@ -25,12 +25,12 @@
         android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
 
         <activity android:name=".FillUpView"
-            android:windowSoftInputMode="stateVisible|adjustResize"/>
+            android:windowSoftInputMode="stateVisible|adjustNothing"/>
 
         <activity android:name=".VehicleInfoView"
-            android:windowSoftInputMode="stateVisible|adjustResize"/>
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
         <activity android:name=".AddNewVehicle"
-            android:windowSoftInputMode="stateVisible|adjustResize"/>
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
 
     </application>
 

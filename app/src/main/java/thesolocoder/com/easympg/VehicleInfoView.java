@@ -2,10 +2,12 @@ package thesolocoder.com.easympg;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class VehicleInfoView extends AppCompatActivity{
 
@@ -17,11 +19,15 @@ public class VehicleInfoView extends AppCompatActivity{
     protected Spinner _odometerSpinner;
     protected Spinner _fuelSpinner;
 
+    private float x1,x2;
+    static final int MIN_DISTANCE = 150;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vehicleinfo);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+       getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         initializeVariables();
     }
 
@@ -65,4 +71,5 @@ public class VehicleInfoView extends AppCompatActivity{
         EnumHelper enumHelper = new EnumHelper();
         return enumHelper.getFuelType(getApplicationContext(), _fuelSpinner.getSelectedItem().toString());
     }
+
 }

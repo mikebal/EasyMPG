@@ -24,5 +24,4 @@ public class AddNewVehicle extends VehicleInfoView{
         VehicleAdmin vehicleAdmin = new VehicleAdmin(getApplicationContext());
         vehicleAdmin.addNewVehicleIfValid(newVehicle);
     }
-
 }
