@@ -31,6 +31,9 @@
             android:windowSoftInputMode="stateHidden|adjustResize"/>
         <activity android:name=".AddNewVehicle"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
+            android:windowSoftInputMode="stateVisible|adjustResize"/>
+        <activity android:name=".EditVehicle"
+            android:windowSoftInputMode="stateVisible|adjustResize"/>
 
     </application>
 
