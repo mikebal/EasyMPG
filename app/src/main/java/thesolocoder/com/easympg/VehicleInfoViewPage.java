@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class VehicleInfoView extends AppCompatActivity{
+public class VehicleInfoViewPage extends AppCompatActivity{
 
     private static final int UNINITIALIZED_PK = -1;
     protected EditText _nickName;
@@ -27,7 +27,7 @@ public class VehicleInfoView extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vehicleinfo);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-       getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         initializeVariables();
     }
 
@@ -71,5 +71,4 @@ public class VehicleInfoView extends AppCompatActivity{
         EnumHelper enumHelper = new EnumHelper();
         return enumHelper.getFuelType(getApplicationContext(), _fuelSpinner.getSelectedItem().toString());
     }
-
 }

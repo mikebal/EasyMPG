@@ -3,20 +3,18 @@ package thesolocoder.com.easympg;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.ArrayList;
-
-public class VehicleTabMain extends VehicleInfoView{
+public class AddNewVehiclePage extends VehicleInfoViewPage {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuItem menuItem = menu.add("saveVehicle");
+        MenuItem menuItem = menu.add("confirm");
         menuItem.setIcon(R.mipmap.ic_check_white_36dp);
         menuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         return super.onCreateOptionsMenu(menu);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getTitle().equals("saveVehicle"))
+        if(item.getTitle().equals("confirm"))
             confirmButtonClicked();
         return super.onOptionsItemSelected(item);
     }
@@ -25,14 +23,6 @@ public class VehicleTabMain extends VehicleInfoView{
         VehicleInfoStruct newVehicle = getVehicleInfo();
         VehicleAdmin vehicleAdmin = new VehicleAdmin(getApplicationContext());
         vehicleAdmin.addNewVehicleIfValid(newVehicle);
-        getSavedVehicles();
+        finish();
     }
-
-    private ArrayList<VehicleInfoStruct> getSavedVehicles(){
-        VehicleAdmin vehicleAdmin = new VehicleAdmin(getApplicationContext());
-        ArrayList<VehicleInfoStruct> vehicles = vehicleAdmin.getVehicleList();
-
-        return vehicles;
-    }
-
 }

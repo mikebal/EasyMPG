@@ -2,9 +2,7 @@ package thesolocoder.com.easympg;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,10 +13,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.AdRequest;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -48,8 +42,8 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent editVehiclePage = new Intent(MainActivity.this, EditVehicle.class);
-                //open_AddRecords.putExtra("toAddToTable", String.valueOf(databaseTable));
+                Intent editVehiclePage = new Intent(MainActivity.this, EditVehiclePage.class);
+                editVehiclePage.putExtra("vehiclePK", String.valueOf(1));
                 startActivity(editVehiclePage);
             }
         });
@@ -103,9 +97,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
      if (id == R.id.nav_vehicleInfo) {
-            Intent editVehiclePage = new Intent(MainActivity.this, EditVehicle.class);
+            Intent viewVehiclePage = new Intent(MainActivity.this, ViewVehicleInfo.class);
             //open_AddRecords.putExtra("toAddToTable", String.valueOf(databaseTable));
-            startActivity(editVehiclePage);
+            startActivity(viewVehiclePage);
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {

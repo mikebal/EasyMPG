@@ -27,12 +27,14 @@
         <activity android:name=".FillUpView"
             android:windowSoftInputMode="stateVisible|adjustNothing"/>
 
-        <activity android:name=".VehicleInfoView"
+        <activity android:name=".VehicleInfoViewPage"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
-        <activity android:name=".AddNewVehicle"
+        <activity android:name=".AddNewVehiclePage"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
             android:windowSoftInputMode="stateVisible|adjustResize"/>
-        <activity android:name=".EditVehicle"
+        <activity android:name=".EditVehiclePage"
+            android:windowSoftInputMode="stateVisible|adjustResize"/>
+        <activity android:name=".ViewVehicleInfo"
             android:windowSoftInputMode="stateVisible|adjustResize"/>
 
     </application>
