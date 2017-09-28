@@ -21,8 +21,8 @@ public class VehicleInfoStruct {
         _fuelUnits = fuelUnits;
     }
 
-    public int getVehiclePK() {
-        return _vehiclePK;
+    public String getVehiclePK() {
+        return String.valueOf(_vehiclePK);
     }
 
     public String getNickName() {

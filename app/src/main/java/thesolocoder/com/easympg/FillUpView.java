@@ -27,7 +27,7 @@ public class FillUpView extends AppCompatActivity{
     private EditText _odometerInput;
     Calendar dateSelected;
     private Button _dateButton;
-    private DatePickerDialog datePickerDialog;
+    private DatePickerDialog _datePickerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class FillUpView extends AppCompatActivity{
     }
     private void setDateTimeField() {
         Calendar newCalendar = dateSelected;
-        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        _datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 dateSelected.set(year, monthOfYear, dayOfMonth, 0, 0);
                 _dateButton.setText(DateFormat.format("mm/dd/yyyy",dateSelected.getTime()));

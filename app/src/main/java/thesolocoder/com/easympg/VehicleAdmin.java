@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
 public class VehicleAdmin{
-    private static final int UNINITIALIZED_PK = -1;
+    private static final String UNINITIALIZED_PK = "-1";
     private Context _appContext;
 
     private static final String _ID = "_id";
@@ -32,9 +32,9 @@ public class VehicleAdmin{
     private boolean verifyNewVehicleIsUnique(VehicleInfoStruct newVehicle){
         DatabaseMain database = new DatabaseMain(_appContext);
         SQLiteDatabase db = database.getReadableDatabase();
-        boolean isValid = true;
+        boolean isValid = false;
 
-        if(newVehicle.getVehiclePK() != UNINITIALIZED_PK){
+        if(!newVehicle.getVehiclePK().equals(UNINITIALIZED_PK)){
             throw new RuntimeException("Vehicle ID already exists can not add new vehicle to the database!");
         }
 
@@ -42,10 +42,12 @@ public class VehicleAdmin{
             String uniqueNickNameQuery = String.format("SELECT * FROM vehicle WHERE nickName='%s'", newVehicle.getNickName());
             Cursor cursor = db.rawQuery(uniqueNickNameQuery, null);
             cursor.moveToFirst();
-            if(!cursor.isAfterLast()){
-                isValid = false;
+            if(cursor.isAfterLast()){
+                isValid = true;
             }
+            cursor.close();
         }
+
         db.close();
         database.close();
         return isValid;
@@ -93,5 +95,44 @@ public class VehicleAdmin{
         c.close();
         db.close();
         return vehicleList;
+    }
+
+    public VehicleInfoStruct getVehicleByPK(String vehiclePK){
+        DatabaseMain database = new DatabaseMain(_appContext);
+        SQLiteDatabase db = database.getReadableDatabase();
+        final String query = "SELECT * FROM " + VEHICLE_TABLE + " WHERE _id =" + vehiclePK;
+        Cursor c = db.rawQuery(query, null);
+        VehicleInfoStruct vehicle = null;
+        c.moveToFirst();
+        while (!c.isAfterLast()){
+            vehicle = new VehicleInfoStruct(Integer.valueOf(c.getString(c.getColumnIndex(_ID))),
+                    c.getString(c.getColumnIndex(NICK_NAME)),
+                    c.getString(c.getColumnIndex(MAKE)),
+                    c.getString(c.getColumnIndex(MODEL)),
+                    c.getString(c.getColumnIndex(YEAR)),
+                    c.getString(c.getColumnIndex(ODOMETER_UNITS)),
+                    c.getString(c.getColumnIndex(DEFAULT_FUEL_UNITS)));
+            c.moveToNext();
+        }
+        c.close();
+        db.close();
+        return vehicle;
+    }
+
+    public boolean updateVehicleInfo(VehicleInfoStruct updatedVehicleInfo){
+        boolean isValid = true;
+        VehicleInfoStruct originalVehicle = getVehicleByPK(updatedVehicleInfo.getVehiclePK());
+        if(!originalVehicle.getNickName().equals(updatedVehicleInfo.getNickName())){
+            isValid = verifyNewVehicleIsUnique(updatedVehicleInfo);
+        }
+
+        if (isValid){
+            ContentValues values = repackageVehicleInfo(updatedVehicleInfo);
+            DatabaseMain database = new DatabaseMain(_appContext);
+            SQLiteDatabase db = database.getWritableDatabase();
+            String[] updateIdArguments = {updatedVehicleInfo.getVehiclePK()} ;
+            db.update(VEHICLE_TABLE, values, _ID + "=?", updateIdArguments);
+        }
+        return isValid;
     }
 }

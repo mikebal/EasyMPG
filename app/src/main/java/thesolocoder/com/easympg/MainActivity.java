@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent editVehiclePage = new Intent(MainActivity.this, EditVehiclePage.class);
-                editVehiclePage.putExtra("vehiclePK", String.valueOf(1));
-                startActivity(editVehiclePage);
+                Intent fillUpPage = new Intent(MainActivity.this, FillUpView.class);
+                fillUpPage.putExtra("vehiclePK", String.valueOf(1));
+                startActivity(fillUpPage);
             }
         });
 
@@ -98,7 +98,6 @@ public class MainActivity extends AppCompatActivity
 
      if (id == R.id.nav_vehicleInfo) {
             Intent viewVehiclePage = new Intent(MainActivity.this, ViewVehicleInfo.class);
-            //open_AddRecords.putExtra("toAddToTable", String.valueOf(databaseTable));
             startActivity(viewVehiclePage);
         } else if (id == R.id.nav_slideshow) {
 

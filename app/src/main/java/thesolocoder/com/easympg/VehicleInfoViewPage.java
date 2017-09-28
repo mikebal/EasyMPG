@@ -2,12 +2,10 @@ package thesolocoder.com.easympg;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 public class VehicleInfoViewPage extends AppCompatActivity{
 
@@ -18,9 +16,6 @@ public class VehicleInfoViewPage extends AppCompatActivity{
     protected EditText _year;
     protected Spinner _odometerSpinner;
     protected Spinner _fuelSpinner;
-
-    private float x1,x2;
-    static final int MIN_DISTANCE = 150;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

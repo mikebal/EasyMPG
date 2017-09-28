@@ -17,7 +17,6 @@ public class DatabaseMain extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         final String queryCreateTableVehicle = "CREATE TABLE vehicle (_id INTEGER PRIMARY KEY, nickName TEXT UNIQUE, make TEXT, model TEXT, year TEXT, odometerUnits TEXT, defaultFuelUnits TEXT);";
         db.execSQL(queryCreateTableVehicle);
-
     }
 
     @Override
