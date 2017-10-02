@@ -9,13 +9,14 @@ public class VehicleInfoStruct {
     private String _odometerUnits;
     private String _fuelUnits;
     private String _year;
+    private static final String SINGLE_QUOTE_SUBSTITUTE = "#%QUOTE%#";
 
 
     public VehicleInfoStruct(int vehiclePK, String nickName, String make, String model, String year, String odometerUnits, String fuelUnits){
         _vehiclePK = vehiclePK;
-        _nickName = nickName;
-        _make = make;
-        _model = model;
+        _nickName = nickName.replaceAll("'", SINGLE_QUOTE_SUBSTITUTE);
+        _make = make.replaceAll("'", SINGLE_QUOTE_SUBSTITUTE);
+        _model = model.replaceAll("'", SINGLE_QUOTE_SUBSTITUTE);
         _year = year;
         _odometerUnits = odometerUnits;
         _fuelUnits = fuelUnits;
@@ -25,16 +26,16 @@ public class VehicleInfoStruct {
         return String.valueOf(_vehiclePK);
     }
 
-    public String getNickName() {
-        return _nickName;
+    public String getNickName() { return _nickName.replaceAll(SINGLE_QUOTE_SUBSTITUTE, "'");
     }
+
+    public String getNickNameSqlSafe() { return _nickName; }
 
     public String getMake() {
-        return _make;
+        return _make.replaceAll(SINGLE_QUOTE_SUBSTITUTE, "'");
     }
 
-    public String getModel() {
-        return _model;
+    public String getModel() { return _model.replaceAll(SINGLE_QUOTE_SUBSTITUTE, "'");
     }
 
     public String getOdometerUnits() {

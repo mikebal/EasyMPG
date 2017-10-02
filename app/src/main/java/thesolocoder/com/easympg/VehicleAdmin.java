@@ -39,7 +39,7 @@ public class VehicleAdmin{
         }
 
         if(!newVehicle.getNickName().equals("")){
-            String uniqueNickNameQuery = String.format("SELECT * FROM vehicle WHERE nickName='%s'", newVehicle.getNickName());
+            String uniqueNickNameQuery = String.format("SELECT * FROM vehicle WHERE nickName='%s'", newVehicle.getNickNameSqlSafe());
             Cursor cursor = db.rawQuery(uniqueNickNameQuery, null);
             cursor.moveToFirst();
             if(cursor.isAfterLast()){

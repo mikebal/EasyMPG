@@ -2,8 +2,15 @@ package thesolocoder.com.easympg;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class AddNewVehiclePage extends VehicleInfoViewPage {
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        findViewById(R.id.vehicleViewNavigation).setVisibility(View.INVISIBLE);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

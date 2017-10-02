@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class ViewVehicleInfo extends VehicleInfoViewPage {
 
     ArrayList<VehicleInfoStruct> _vehicles = new ArrayList<>();
-    int _currentVehicleToView = 0;
     final int UNSET_VALUE = -1;
+    int _currentVehicleToView = 0;
 
     Button _nextVehicleButton;
     Button _backVehicleButton;
@@ -27,10 +27,7 @@ public class ViewVehicleInfo extends VehicleInfoViewPage {
         super.onStart();
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
-            _currentVehicleToView = extras.getInt("vehiclePK", -1);
-        }
-        else{
-            _currentVehicleToView = UNSET_VALUE;
+            _currentVehicleToView = extras.getInt("vehiclePK", UNSET_VALUE);
         }
 
         VehicleAdmin vehicleAdmin = new VehicleAdmin(this);

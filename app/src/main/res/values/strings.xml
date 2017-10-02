@@ -47,4 +47,7 @@
     <string name="Confirm">Confirm</string>
     <string name="Cancel">Cancel</string>
 
+    <string name="firstStartDialogTitle">Welcome New User</string>
+    <string name="firstStartDialogBody">Please add a vehicle / specify your measurement units to start using the app</string>
+
 </resources>

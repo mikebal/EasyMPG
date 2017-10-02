@@ -1,8 +1,11 @@
 package thesolocoder.com.easympg;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import com.google.android.gms.ads.AdView;
 
 public class MainActivity extends AppCompatActivity
@@ -28,8 +32,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-   //     DEVICE_ID = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
-    //    DEVICE_ID = md5(DEVICE_ID).toUpperCase();
+        //     DEVICE_ID = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+        //    DEVICE_ID = md5(DEVICE_ID).toUpperCase();
 
         /*adView = (AdView) this.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
@@ -56,6 +60,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        handlePotentialNoVehiclesInDataBase();
     }
 
     @Override
@@ -96,7 +102,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-     if (id == R.id.nav_vehicleInfo) {
+        if (id == R.id.nav_vehicleInfo) {
             Intent viewVehiclePage = new Intent(MainActivity.this, ViewVehicleInfo.class);
             startActivity(viewVehiclePage);
         } else if (id == R.id.nav_slideshow) {
@@ -112,6 +118,27 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void handlePotentialNoVehiclesInDataBase() {
+        VehicleAdmin vehicleAdmin = new VehicleAdmin(this);
+        if (vehicleAdmin.getVehicleList().isEmpty()) {
+            AlertDialog.Builder builder;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                builder = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault);
+            } else {
+                builder = new AlertDialog.Builder(this);
+            }
+            builder.setTitle(getString(R.string.firstStartDialogTitle))
+                    .setMessage(getString(R.string.firstStartDialogBody))
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent addNewVehicle = new Intent(MainActivity.this, AddNewVehiclePage.class);
+                            startActivity(addNewVehicle);
+                        }
+                    })
+                    .show();
+        }
     }
 
    /* public String md5(String s) {

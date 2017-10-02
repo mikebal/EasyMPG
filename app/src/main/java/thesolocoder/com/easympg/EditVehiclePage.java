@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class EditVehiclePage extends VehicleInfoViewPage {
 
@@ -18,6 +19,7 @@ public class EditVehiclePage extends VehicleInfoViewPage {
             finish();
         }
 
+        findViewById(R.id.vehicleViewNavigation).setVisibility(View.INVISIBLE);
         VehicleAdmin vehicleAdmin = new VehicleAdmin(this);
         showVehicleInfo(vehicleAdmin.getVehicleByPK(_vehiclePK));
     }
