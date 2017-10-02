@@ -10,7 +10,7 @@ public class VehicleAdmin{
     private static final String UNINITIALIZED_PK = "-1";
     private Context _appContext;
 
-    private static final String _ID = "_id";
+    private static final String _vehicleID = "_vehicleID";
     private static final String NICK_NAME = "nickName";
     private static final String MAKE = "make";
     private static final String MODEL = "model";
@@ -82,7 +82,7 @@ public class VehicleAdmin{
         VehicleInfoStruct vehicle;
         c.moveToFirst();
         while (!c.isAfterLast()){
-            vehicle = new VehicleInfoStruct(Integer.valueOf(c.getString(c.getColumnIndex(_ID))),
+            vehicle = new VehicleInfoStruct(Integer.valueOf(c.getString(c.getColumnIndex(_vehicleID))),
                                             c.getString(c.getColumnIndex(NICK_NAME)),
                                             c.getString(c.getColumnIndex(MAKE)),
                                             c.getString(c.getColumnIndex(MODEL)),
@@ -100,12 +100,12 @@ public class VehicleAdmin{
     public VehicleInfoStruct getVehicleByPK(String vehiclePK){
         DatabaseMain database = new DatabaseMain(_appContext);
         SQLiteDatabase db = database.getReadableDatabase();
-        final String query = "SELECT * FROM " + VEHICLE_TABLE + " WHERE _id =" + vehiclePK;
+        final String query = "SELECT * FROM " + VEHICLE_TABLE + " WHERE " + _vehicleID +" =" + vehiclePK;
         Cursor c = db.rawQuery(query, null);
         VehicleInfoStruct vehicle = null;
         c.moveToFirst();
         while (!c.isAfterLast()){
-            vehicle = new VehicleInfoStruct(Integer.valueOf(c.getString(c.getColumnIndex(_ID))),
+            vehicle = new VehicleInfoStruct(Integer.valueOf(c.getString(c.getColumnIndex(_vehicleID))),
                     c.getString(c.getColumnIndex(NICK_NAME)),
                     c.getString(c.getColumnIndex(MAKE)),
                     c.getString(c.getColumnIndex(MODEL)),
@@ -131,7 +131,7 @@ public class VehicleAdmin{
             DatabaseMain database = new DatabaseMain(_appContext);
             SQLiteDatabase db = database.getWritableDatabase();
             String[] updateIdArguments = {updatedVehicleInfo.getVehiclePK()} ;
-            db.update(VEHICLE_TABLE, values, _ID + "=?", updateIdArguments);
+            db.update(VEHICLE_TABLE, values, _vehicleID + "=?", updateIdArguments);
         }
         return isValid;
     }
