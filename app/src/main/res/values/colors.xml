@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1919ff</color>
-    <color name="colorPrimaryDark">#000099</color>
+    <color name="colorPrimary">#3D4148</color>
+    <color name="colorPrimaryDark">#272A2F</color>
     <color name="colorAccent">#cc0000</color>
 
     <color name="vehicleInfoSectionHeader">#82a2ac</color>
-    <color name="boarderTrim">#91b4c0</color>
+    <color name="boarderTrim">#474C55</color>
+    <color name="background">#A3ADC2</color>
+    <color name="folderBackground">#FFFFFF</color>
+    <color name="folderText">#272A2F</color>
 </resources>

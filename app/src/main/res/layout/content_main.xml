@@ -13,6 +13,46 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="10"
+            android:id="@+id/vehicleViewNavigation">
+            <Button
+                android:id="@+id/vehicleNavigationBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_weight="2"
+                android:onClick="mainViewPreviousVehicleClicked"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@mipmap/ic_navigate_before_black_48dp"
+                android:drawableStart="@mipmap/ic_navigate_before_black_48dp"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/vehicleDisplayNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:textAlignment="center"
+                android:ems="10"
+                android:layout_weight="6"/>
+
+            <Button
+                android:id="@+id/vehicleNavigationForward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:background="@android:color/transparent"
+                android:drawableRight="@mipmap/ic_navigate_next_black_48dp"
+                android:drawableEnd="@mipmap/ic_navigate_next_black_48dp"
+                android:layout_weight="2"
+                android:onClick="mainViewNextVehicleClicked"/>
+
+
+        </LinearLayout>
+
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         android:layout_width="wrap_content"

@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
@@ -15,14 +16,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private AdView adView;
     private static final String AD_UNIT_ID = "ca-app-pub-5668026099954241/1605639619";
+    final int UNSET_VALUE = -1;
+    ArrayList<VehicleInfoStruct> _vehicles = new ArrayList<>();
+    int _currentVehicleToView = 0;
+    TextView _vehicleNameHeader;
+    private AdView adView;
     private String DEVICE_ID = "A8C632156BC7C4AD5AB1ABA12C95349A";
 
     @Override
@@ -32,15 +43,15 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //     DEVICE_ID = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
-        //    DEVICE_ID = md5(DEVICE_ID).toUpperCase();
+        DEVICE_ID = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+        DEVICE_ID = md5(DEVICE_ID).toUpperCase();
 
-        /*adView = (AdView) this.findViewById(R.id.adView);
+        adView = (AdView) this.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                                            .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                                            .addTestDevice(DEVICE_ID)
                                            .build();
-        adView.loadAd(adRequest);*/
+        adView.loadAd(adRequest);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +72,15 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        handlePotentialNoVehiclesInDataBase();
+        _vehicleNameHeader = (TextView) findViewById(R.id.vehicleDisplayNameText);
+
+        updateVehicleList();
+        if(_vehicles.isEmpty()){
+            isVehiclesInTheDatabaseOrAddNewVehicle();
+        }
+       else{
+            updateVehicleList();
+        }
     }
 
     @Override
@@ -120,9 +139,45 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void handlePotentialNoVehiclesInDataBase() {
+
+    private void updateVehicleList(){
         VehicleAdmin vehicleAdmin = new VehicleAdmin(this);
+        _vehicles = vehicleAdmin.getVehicleList();
+        if(!_vehicles.isEmpty()){
+            updateScreenWithVehicleInfo();
+        }
+    }
+
+    public void mainViewPreviousVehicleClicked(View v){
+       if(--_currentVehicleToView < 0){
+           _currentVehicleToView = _vehicles.size() - 1;
+       }
+        updateScreenWithVehicleInfo();
+    }
+
+    public void mainViewNextVehicleClicked(View v){
+        if(++_currentVehicleToView >= _vehicles.size()){
+            _currentVehicleToView = 0;
+        }
+        updateScreenWithVehicleInfo();
+    }
+
+    private void updateScreenWithVehicleInfo(){
+        _vehicleNameHeader.setText(_vehicles.get(_currentVehicleToView).getNickName());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateVehicleList();
+    }
+
+    private boolean isVehiclesInTheDatabaseOrAddNewVehicle() {
+        VehicleAdmin vehicleAdmin = new VehicleAdmin(this);
+        boolean vehiclesAlreadyExist = true;
+
         if (vehicleAdmin.getVehicleList().isEmpty()) {
+            vehiclesAlreadyExist = false;
             AlertDialog.Builder builder;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 builder = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault);
@@ -139,9 +194,10 @@ public class MainActivity extends AppCompatActivity
                     })
                     .show();
         }
+        return vehiclesAlreadyExist;
     }
 
-   /* public String md5(String s) {
+    public String md5(String s) {
         try {
             // Create MD5 Hash
             MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
@@ -158,5 +214,5 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
         return "";
-    }*/
+    }
 }
