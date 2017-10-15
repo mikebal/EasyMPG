@@ -13,14 +13,10 @@ import java.util.ArrayList;
 
 public class ViewVehicleInfo extends VehicleInfoViewPage {
 
-    ArrayList<VehicleInfoStruct> _vehicles = new ArrayList<>();
-    final int UNSET_VALUE = -1;
-    int _currentVehicleToView = 0;
-
+    private ArrayList<VehicleInfoStruct> _vehicles = new ArrayList<>();
     Button _nextVehicleButton;
     Button _backVehicleButton;
     TextView _vehicleNameHeader;
-
 
     @Override
     public void onStart(){
@@ -47,7 +43,7 @@ public class ViewVehicleInfo extends VehicleInfoViewPage {
         _nickName.setOnTouchListener(consumeKeyboard);
         _nickName.setFocusable(false);
 
-        showVehicleInfo();
+        showVehicleInfo(_vehicles.get(_currentVehicleToView));
     }
 
     @Override
@@ -85,22 +81,12 @@ public class ViewVehicleInfo extends VehicleInfoViewPage {
         startActivityForResult(editVehicle, 1);
     }
 
-    private void showVehicleInfo(){
-        if(_currentVehicleToView != UNSET_VALUE) {
-            VehicleInfoStruct vehicle = _vehicles.get(_currentVehicleToView);
-            _year.setText(vehicle.getYear());
-            _make.setText(vehicle.getMake());
-            _model.setText(vehicle.getModel());
-            _nickName.setText(vehicle.getNickName());
-        }
-    }
-
     public void viewNextVehicle(View v){
         _currentVehicleToView = _currentVehicleToView + 1;
         if(_currentVehicleToView == _vehicles.size()){
             _currentVehicleToView = 0;
         }
-        showVehicleInfo();
+        showVehicleInfo(_vehicles.get(_currentVehicleToView));
     }
 
     public void viewPreviousVehicle(View v){
@@ -108,7 +94,7 @@ public class ViewVehicleInfo extends VehicleInfoViewPage {
         if(_currentVehicleToView == -1){
             _currentVehicleToView = _vehicles.size() - 1;
         }
-        showVehicleInfo();
+        showVehicleInfo(_vehicles.get(_currentVehicleToView));
     }
 
     @Override
@@ -117,12 +103,12 @@ public class ViewVehicleInfo extends VehicleInfoViewPage {
         if(resultCode == 1) {
             VehicleAdmin vehicleAdmin = new VehicleAdmin(this);
             _vehicles = vehicleAdmin.getVehicleList();
-            setCurrentVehicletoViewByPK(data.getIntExtra("successfulEditedVehiclePK", -1));
-            showVehicleInfo();
+            setCurrentVehicleToViewByPK(data.getIntExtra("successfulEditedVehiclePK", -1));
+            showVehicleInfo(_vehicles.get(_currentVehicleToView));
         }
     }
 
-    private void setCurrentVehicletoViewByPK(int vehiclePK){
+    private void setCurrentVehicleToViewByPK(int vehiclePK){
         if(vehiclePK != UNSET_VALUE) {
             for (int i = 0; i < _vehicles.size(); i++) {
                 if (vehiclePK == Integer.valueOf(_vehicles.get(i).getVehiclePK())) {

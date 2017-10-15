@@ -17,6 +17,9 @@ public class VehicleInfoViewPage extends AppCompatActivity{
     protected Spinner _odometerSpinner;
     protected Spinner _fuelSpinner;
 
+    final int UNSET_VALUE = -1;
+    int _currentVehicleToView = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,5 +68,32 @@ public class VehicleInfoViewPage extends AppCompatActivity{
     private String getFuelMeasurementValue(){
         EnumHelper enumHelper = new EnumHelper();
         return enumHelper.getFuelType(getApplicationContext(), _fuelSpinner.getSelectedItem().toString());
+    }
+
+    protected void showVehicleInfo(VehicleInfoStruct vehicle) {
+        if (vehicle != null) {
+            _year.setText(vehicle.getYear());
+            _make.setText(vehicle.getMake());
+            _model.setText(vehicle.getModel());
+            _nickName.setText(vehicle.getNickName());
+
+
+            String[] fuelSpinnerChoices = getResources().getStringArray(R.array.fuelMeasurementArray);
+            int index = 0;
+            for (String fuelMeasurement : fuelSpinnerChoices) {
+                if (fuelMeasurement.toUpperCase().equals(vehicle.getFuelUnits().toUpperCase())) {
+                    _fuelSpinner.setSelection(index);
+                }
+                index++;
+            }
+            index = 0;
+            String[] odometerChoices = getResources().getStringArray(R.array.odometerMeasurementArray);
+            for (String odometerUnits : odometerChoices) {
+                if (odometerUnits.toUpperCase().equals(vehicle.getOdometerUnits().toUpperCase())) {
+                    _odometerSpinner.setSelection(index);
+                }
+                index++;
+            }
+        }
     }
 }

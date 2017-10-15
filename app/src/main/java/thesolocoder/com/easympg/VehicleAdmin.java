@@ -119,20 +119,20 @@ public class VehicleAdmin{
         return vehicle;
     }
 
-    public boolean updateVehicleInfo(VehicleInfoStruct updatedVehicleInfo){
-        boolean isValid = true;
-        VehicleInfoStruct originalVehicle = getVehicleByPK(updatedVehicleInfo.getVehiclePK());
-        if(!originalVehicle.getNickName().equals(updatedVehicleInfo.getNickName())){
+    public void updateVehicleInfo(VehicleInfoStruct updatedVehicleInfo){
+       // boolean isValid = true;
+      //  VehicleInfoStruct originalVehicle = getVehicleByPK(updatedVehicleInfo.getVehiclePK());
+       /* if(!originalVehicle.getNickName().equals(updatedVehicleInfo.getNickName())){
             isValid = verifyNewVehicleIsUnique(updatedVehicleInfo);
-        }
+        }*/
 
-        if (isValid){
+     //   if (isValid){
             ContentValues values = repackageVehicleInfo(updatedVehicleInfo);
             DatabaseMain database = new DatabaseMain(_appContext);
             SQLiteDatabase db = database.getWritableDatabase();
             String[] updateIdArguments = {updatedVehicleInfo.getVehiclePK()} ;
             db.update(VEHICLE_TABLE, values, _vehicleID + "=?", updateIdArguments);
-        }
-        return isValid;
+     //   }
+     //   return isValid;
     }
 }

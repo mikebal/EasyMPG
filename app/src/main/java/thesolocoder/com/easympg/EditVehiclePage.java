@@ -37,22 +37,13 @@ public class EditVehiclePage extends VehicleInfoViewPage {
                 VehicleAdmin vehicleAdmin = new VehicleAdmin(this);
                 VehicleInfoStruct updatedVehicle = getVehicleInfo();
                 updatedVehicle.setVehiclePK(Integer.valueOf(_vehiclePK));
-                boolean isEditValid = vehicleAdmin.updateVehicleInfo(updatedVehicle);
-                if(isEditValid){
+                vehicleAdmin.updateVehicleInfo(updatedVehicle);
                     Intent output = new Intent();
                     output.putExtra("successfulEditedVehiclePK", Integer.valueOf(_vehiclePK));
                     setResult(1, output);
                     finish();
-                }
             }
             return super.onOptionsItemSelected(item);
         }
-
-    private void showVehicleInfo(VehicleInfoStruct vehicle){
-        _year.setText(vehicle.getYear());
-        _make.setText(vehicle.getMake());
-        _model.setText(vehicle.getModel());
-        _nickName.setText(vehicle.getNickName());
-    }
 }
 

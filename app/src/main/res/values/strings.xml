@@ -19,11 +19,11 @@
     <string-array name="fuelMeasurementArray">
         <item>Liters (L)</item>
         <item>US Gallons (Gal)</item>
-        <item>Imperial gallon</item>
+        <item>Imperial gallons</item>
     </string-array>
     <string name="Liters">Liters (L)</string>
     <string name="USGallons">US Gallons (Gal)</string>
-    <string name="UKGallons">Imperial gallon</string>
+    <string name="UKGallons">Imperial gallons</string>
 
     <string-array name="odometerMeasurementArray">
         <item>Miles</item>
