@@ -1,6 +1,6 @@
 package thesolocoder.com.easympg;
 
-public class VehicleInfoStruct {
+class VehicleInfoStruct {
     private static final int UNINITIALIZED_PK = -1;
     private int _vehiclePK = UNINITIALIZED_PK;
     private String _nickName;
@@ -12,7 +12,7 @@ public class VehicleInfoStruct {
     private static final String SINGLE_QUOTE_SUBSTITUTE = "#%QUOTE%#";
 
 
-    public VehicleInfoStruct(int vehiclePK, String nickName, String make, String model, String year, String odometerUnits, String fuelUnits){
+    VehicleInfoStruct(int vehiclePK, String nickName, String make, String model, String year, String odometerUnits, String fuelUnits){
         _vehiclePK = vehiclePK;
         _nickName = nickName.replaceAll("'", SINGLE_QUOTE_SUBSTITUTE);
         _make = make.replaceAll("'", SINGLE_QUOTE_SUBSTITUTE);
@@ -22,35 +22,35 @@ public class VehicleInfoStruct {
         _fuelUnits = fuelUnits;
     }
 
-    public String getVehiclePK() {
+    String getVehiclePK() {
         return String.valueOf(_vehiclePK);
     }
 
-    public String getNickName() { return _nickName.replaceAll(SINGLE_QUOTE_SUBSTITUTE, "'");
+    String getNickName() { return _nickName.replaceAll(SINGLE_QUOTE_SUBSTITUTE, "'");
     }
 
-    public String getNickNameSqlSafe() { return _nickName; }
+    String getNickNameSqlSafe() { return _nickName; }
 
-    public String getMake() {
+    String getMake() {
         return _make.replaceAll(SINGLE_QUOTE_SUBSTITUTE, "'");
     }
 
-    public String getModel() { return _model.replaceAll(SINGLE_QUOTE_SUBSTITUTE, "'");
+    String getModel() { return _model.replaceAll(SINGLE_QUOTE_SUBSTITUTE, "'");
     }
 
-    public String getOdometerUnits() {
+    String getOdometerUnits() {
         return _odometerUnits;
     }
 
-    public String getFuelUnits(){
+    String getFuelUnits(){
         return _fuelUnits;
     }
 
-    public String  getYear() {
+    String  getYear() {
         return _year;
     }
 
-    public void setVehiclePK(int vehiclePK){
+    void setVehiclePK(int vehiclePK){
         _vehiclePK = vehiclePK;
     }
 }

@@ -30,9 +30,6 @@ public class VehicleTabMainPage extends VehicleInfoViewPage {
 
     private ArrayList<VehicleInfoStruct> getSavedVehicles(){
         VehicleAdmin vehicleAdmin = new VehicleAdmin(getApplicationContext());
-        ArrayList<VehicleInfoStruct> vehicles = vehicleAdmin.getVehicleList();
-
-        return vehicles;
+        return vehicleAdmin.getVehicleList();
     }
-
 }
