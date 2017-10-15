@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent fillUpPage = new Intent(MainActivity.this, FillUpView.class);
-                fillUpPage.putExtra("vehiclePK", String.valueOf(1));
+                fillUpPage.putExtra("vehiclePK", _vehicles.get(_currentVehicleToView).getVehiclePK());
                 startActivity(fillUpPage);
             }
         });
@@ -115,10 +115,8 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_vehicleInfo) {

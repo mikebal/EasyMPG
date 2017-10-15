@@ -6,307 +6,309 @@
     android:background="@color/background"
     android:isScrollContainer="true">
 
-    <RelativeLayout android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_marginTop="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_gravity="center_vertical">
-
         <LinearLayout
-            android:id="@+id/defaultLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:weightSum="1">
-
-            <TextView
-                android:id="@+id/textViewRecommendedHeader"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
-                android:layout_width="102dp"
-                android:layout_height="30dp"
-                android:background="@drawable/addvehicle_roundedfolder_header"
-                android:text="@string/Recommended"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/defaultLinearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/addvehicle_roundedfolder_frame"
-                android:baselineAligned="false"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:background="@color/background"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/textViewRecommendedHeader"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
+                    android:layout_width="102dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/addvehicle_roundedfolder_header"
+                    android:text="@string/Recommended"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/addvehicle_roundedfolder_body"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/addvehicle_roundedfolder_frame"
                     android:baselineAligned="false"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
+                        android:background="@drawable/addvehicle_roundedfolder_body"
+                        android:baselineAligned="false"
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/textViewNickName"
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="7dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="7dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_weight="0.89"
-                            android:text="@string/NickName"
-                            android:textColor="@color/folderText"
-                            android:textSize="20sp" />
+                            android:layout_marginBottom="8dp"
+                            android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/editTextVehicleNickName"
-                            android:layout_width="164dp"
+                            <TextView
+                                android:id="@+id/textViewNickName"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="7dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="7dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="0.89"
+                                android:text="@string/NickName"
+                                android:textColor="@color/folderText"
+                                android:textSize="20sp" />
+
+                            <EditText
+                                android:id="@+id/editTextVehicleNickName"
+                                android:layout_width="164dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginRight="16dp"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:inputType="textCapSentences"
+                                android:maxLength="30" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="16dp"
-                            android:layout_marginRight="16dp"
-                            android:ems="10"
-                            android:gravity="center"
-                            android:inputType="textCapSentences"
-                            android:maxLength="30" />
-                    </LinearLayout>
+                            android:layout_marginBottom="8dp"
+                            android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/textViewOdometerUnits"
+                                android:layout_width="wrap_content"
+                                android:layout_height="46dp"
+                                android:layout_marginEnd="7dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="7dp"
+                                android:layout_marginStart="10dp"
+                                android:text="@string/OdometerUnits"
+                                android:textColor="@color/folderText"
+                                android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/textViewOdometerUnits"
-                            android:layout_width="wrap_content"
-                            android:layout_height="46dp"
-                            android:layout_marginEnd="7dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="7dp"
-                            android:layout_marginStart="10dp"
-                            android:text="@string/OdometerUnits"
-                            android:textColor="@color/folderText"
-                            android:textSize="20sp" />
+                            <Spinner
+                                android:id="@+id/spinnerOdometerUnits"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.18"
+                                android:gravity="center"
+                                android:spinnerMode="dropdown"
+                                android:textAlignment="center" />
+                        </LinearLayout>
 
-                        <Spinner
-                            android:id="@+id/spinnerOdometerUnits"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.18"
-                            android:gravity="center"
-                            android:spinnerMode="dropdown"
-                            android:textAlignment="center" />
-                    </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/textView51"
+                                android:layout_width="wrap_content"
+                                android:layout_height="34dp"
+                                android:layout_marginEnd="7dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="7dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="0.12"
+                                android:text="@string/fuelInputUnits"
+                                android:textColor="@color/folderText"
+                                android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/textView51"
-                            android:layout_width="wrap_content"
-                            android:layout_height="34dp"
-                            android:layout_marginEnd="7dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="7dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_weight="0.12"
-                            android:text="@string/fuelInputUnits"
-                            android:textColor="@color/folderText"
-                            android:textSize="20sp" />
-
-                        <Spinner
-                            android:id="@+id/spinnerFuelUnits"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.38"
-                            android:gravity="center"
-                            android:spinnerMode="dropdown"
-                            android:textAlignment="center" />
+                            <Spinner
+                                android:id="@+id/spinnerFuelUnits"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.38"
+                                android:gravity="center"
+                                android:spinnerMode="dropdown"
+                                android:textAlignment="center" />
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
 
 
-            <TextView
-                android:id="@+id/textView6"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:background="@drawable/addvehicle_roundedfolder_header"
-                android:text="@string/Optional"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/addvehicle_roundedfolder_frame"
-                android:baselineAligned="false"
-                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/textView6"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@drawable/addvehicle_roundedfolder_header"
+                    android:text="@string/Optional"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/addvehicle_roundedfolder_body"
+                    android:background="@drawable/addvehicle_roundedfolder_frame"
                     android:baselineAligned="false"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
+                        android:background="@drawable/addvehicle_roundedfolder_body"
+                        android:baselineAligned="false"
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="7dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="7dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_weight="0.89"
-                            android:text="@string/Make"
-                            android:textColor="@color/folderText"
-                            android:textSize="20sp" />
+                            android:layout_marginBottom="8dp"
+                            android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/editTextVehicleMake"
-                            android:layout_width="180dp"
+                            <TextView
+                                android:id="@+id/textView3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="7dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="7dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="0.89"
+                                android:text="@string/Make"
+                                android:textColor="@color/folderText"
+                                android:textSize="20sp" />
+
+                            <EditText
+                                android:id="@+id/editTextVehicleMake"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginRight="16dp"
+                                android:layout_weight="1"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:inputType="textCapSentences"
+                                android:maxLength="30" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_weight="1"
-                            android:ems="10"
-                            android:gravity="center"
-                            android:inputType="textCapSentences"
-                            android:maxLength="30" />
-                    </LinearLayout>
+                            android:layout_marginBottom="8dp"
+                            android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/textView4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="7dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="7dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="0.68"
+                                android:text="@string/Model"
+                                android:textColor="@color/folderText"
+                                android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/textView4"
-                            android:layout_width="wrap_content"
+                            <EditText
+                                android:id="@+id/editTextVehicleModel"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginRight="16dp"
+                                android:layout_weight="1"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:inputType="textCapSentences"
+                                android:maxLength="30" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="7dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="7dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_weight="0.68"
-                            android:text="@string/Model"
-                            android:textColor="@color/folderText"
-                            android:textSize="20sp" />
+                            android:layout_marginBottom="8dp"
+                            android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/editTextVehicleModel"
-                            android:layout_width="180dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_weight="1"
-                            android:ems="10"
-                            android:gravity="center"
-                            android:inputType="textCapSentences"
-                            android:maxLength="30" />
-                    </LinearLayout>
+                            <TextView
+                                android:id="@+id/textView5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="7dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="7dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="0.89"
+                                android:text="@string/Year"
+                                android:textColor="@color/folderText"
+                                android:textSize="20sp" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="7dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="7dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_weight="0.89"
-                            android:text="@string/Year"
-                            android:textColor="@color/folderText"
-                            android:textSize="20sp" />
-
-                        <EditText
-                            android:id="@+id/editTextVehicleYear"
-                            android:layout_width="180dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_weight="1"
-                            android:ems="10"
-                            android:gravity="center"
-                            android:inputType="number"
-                            android:maxLength="4" />
+                            <EditText
+                                android:id="@+id/editTextVehicleYear"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginRight="16dp"
+                                android:layout_weight="1"
+                                android:ems="10"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:maxLength="4" />
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:weightSum="10"
-    android:id="@+id/vehicleViewNavigation">
-        <Button
-            android:id="@+id/vehicleNavigationBack"
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:id="@+id/vehicleViewNavigation"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:text=""
-            android:layout_weight="2"
-            android:onClick="viewPreviousVehicle"
-            android:background="@android:color/transparent"
-            android:drawableLeft="@mipmap/ic_navigate_before_black_48dp"/>
-    <TextView
-        android:id="@+id/vehicleDisplayNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:ems="10"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_toLeftOf="@+id/button2"
-        android:layout_toRightOf="@+id/button3"
-        android:layout_toEndOf="@+id/button3"
-        android:layout_weight="6"/>
+            android:weightSum="10">
 
-        <Button
-            android:id="@+id/vehicleNavigationForward"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:text=""
-            android:background="@android:color/transparent"
-            android:drawableRight="@mipmap/ic_navigate_next_black_48dp"
-            android:layout_weight="2"
-            android:onClick="viewNextVehicle"/>
+            <Button
+                android:id="@+id/vehicleNavigationBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_weight="2"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@mipmap/ic_navigate_before_black_48dp"
+                android:onClick="viewPreviousVehicle"
+                android:text="" />
 
+            <TextView
+                android:id="@+id/vehicleDisplayNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/button2"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/button3"
+                android:layout_toLeftOf="@+id/button2"
+                android:layout_toRightOf="@+id/button3"
+                android:layout_weight="6"
+                android:ems="10" />
 
-</LinearLayout>
+            <Button
+                android:id="@+id/vehicleNavigationForward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_weight="2"
+                android:background="@android:color/transparent"
+                android:drawableRight="@mipmap/ic_navigate_next_black_48dp"
+                android:onClick="viewNextVehicle"
+                android:text="" />
+        </LinearLayout>
     </RelativeLayout>
 </ScrollView>
