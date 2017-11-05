@@ -12,11 +12,13 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.LinearLayout;;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,6 +35,7 @@ public class FillUpView extends AppCompatActivity{
     private Button _dateButton;
     private DatePickerDialog _datePickerDialog;
     private Spinner _fuelMeasurementSpinner;
+    private FillUpInfoStruct _previousFillupForVehicle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +43,6 @@ public class FillUpView extends AppCompatActivity{
         setContentView(R.layout.fillup);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         setupVariables();
-
-        int i = 0;
     }
 
     @Override
@@ -54,8 +55,14 @@ public class FillUpView extends AppCompatActivity{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getTitle().equals("saveFillUp")) {
-            VehicleAdmin vehicleAdmin = new VehicleAdmin(this);
-            finish();
+
+            FillUpAdmin fillUpAdmin = new FillUpAdmin(this);
+            if(isFillUpValid()){
+                fillUpAdmin.addNewFillUp(getUserEnteredFillUpInfo());
+                finish();
+            }else{
+                Toast.makeText(this, "Missing Required Fields", Toast.LENGTH_SHORT).show();
+            }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -77,6 +84,7 @@ public class FillUpView extends AppCompatActivity{
     public void dateButtonClicked(View v){
       toggleCalendarLayout();
     }
+
     private void setDateTimeField() {
         Calendar newCalendar = dateSelected;
         _datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
@@ -85,14 +93,32 @@ public class FillUpView extends AppCompatActivity{
                 _dateButton.setText(DateFormat.format("mm/dd/yyyy",dateSelected.getTime()));
             }
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
-        _dateButton.setText(DateFormat.format("mm/dd/yyyy",dateSelected.getTime()));
     }
 
 
     private void toggleCalendarLayout(){
         LinearLayout defaultLayout = (LinearLayout) findViewById(R.id.defaultLinearLayout);
-        defaultLayout.setVisibility(View.GONE);
-        findViewById(R.id.linearLayoutDateSelector).setVisibility(View.VISIBLE);
+        LinearLayout calendarLayout = (LinearLayout) findViewById(R.id.linearLayoutDateSelector);
+        if(defaultLayout.getVisibility() == View.VISIBLE) {
+            defaultLayout.setVisibility(View.GONE);
+            calendarLayout.setVisibility(View.VISIBLE);
+        }
+        else{
+            calendarLayout.setVisibility(View.GONE);
+            defaultLayout.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void calendarCancelClicked(View v){
+        toggleCalendarLayout();
+    }
+
+    public void calendarDateConfirmation(View v){
+        int month = _datePickerDialog.getDatePicker().getMonth() + 1;
+        int day   = _datePickerDialog.getDatePicker().getDayOfMonth();
+        int year  = _datePickerDialog.getDatePicker().getYear();
+        _dateButton.setText(String.format("%d/%d/%d", month, day, year));
+        toggleCalendarLayout();
     }
 
 
@@ -181,15 +207,53 @@ public class FillUpView extends AppCompatActivity{
     }
 
     private void updateScreenWithVehicleInfo(){
+        FillUpAdmin fillUpAdmin = new FillUpAdmin(this);
         _vehicleNameHeader.setText(_vehicles.get(_currentVehicleToView).getNickName());
         String[] fuelSpinnerChoices = getResources().getStringArray(R.array.fuelMeasurementArray);
         int index = 0;
         for (String fuelMeasurement : fuelSpinnerChoices) {
             if (fuelMeasurement.toUpperCase().equals(_vehicles.get(_currentVehicleToView).getFuelUnits().toUpperCase())) {
                 _fuelMeasurementSpinner.setSelection(index);
+                _previousFillupForVehicle = fillUpAdmin.getLastFillUpFromPK(_vehicles.get(_currentVehicleToView).getVehiclePK());
             }
             index++;
         }
     }
 
+    private boolean isFillUpValid(){
+        boolean isValid = true;
+        EditText fuelQuantity = (EditText) findViewById(R.id.editTextFuelQuantity);
+        EditText fuelPrice = (EditText) findViewById(R.id.editTextFuelPrice);
+        if(_odometerInput.getText().toString().isEmpty() || Double.valueOf(_odometerInput.getText().toString()) < _previousFillupForVehicle.get_odometer())
+        {
+            isValid = false;
+        }
+        if(fuelPrice.getText().toString().isEmpty()){
+            isValid = false;
+        }
+        if(fuelQuantity.getText().toString().isEmpty()){
+            isValid = false;
+        }
+        return isValid;
+    }
+
+
+    private FillUpInfoStruct getUserEnteredFillUpInfo(){
+        CheckBox missedPreviousFillUp = (CheckBox) findViewById(R.id.missedPreviousFillUpCheckBox);
+        int missedFillUpIsChecked = 0;
+        if(missedPreviousFillUp.isChecked()){
+            missedFillUpIsChecked = 1;
+        }
+        EditText fuelQuantity = (EditText) findViewById(R.id.editTextFuelQuantity);
+        EditText fuelPrice = (EditText) findViewById(R.id.editTextFuelPrice);
+        return new FillUpInfoStruct(-1,
+                Integer.valueOf(_vehicles.get(_currentVehicleToView).getVehiclePK()),
+                missedFillUpIsChecked,
+                Double.valueOf(fuelQuantity.getText().toString()),
+                Double.valueOf(fuelPrice.getText().toString()),
+                _dateButton.getText().toString(),
+                Integer.valueOf(_odometerInput.getText().toString().replaceAll(",","")),
+                -1,
+                0);
+    }
 }

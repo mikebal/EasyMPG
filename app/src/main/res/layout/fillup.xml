@@ -2,144 +2,119 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    android:background="@color/vehicleInfoSectionHeader"
+    android:background="#5190d6"
     android:padding="10dp">
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:weightSum="10"
-        android:id="@+id/vehicleViewNavigation">
-        <Button
-            android:id="@+id/vehicleNavigationBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:layout_weight="2"
-            android:onClick="fillUpViewPreviousVehicleClicked"
-            android:background="@android:color/transparent"
-            android:drawableLeft="@mipmap/ic_navigate_before_black_48dp"
-            android:drawableStart="@mipmap/ic_navigate_before_black_48dp"/>
-        <TextView
-            android:id="@+id/vehicleDisplayNameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:textSize="25sp"
-            android:textAlignment="center"
-            android:layout_weight="6"/>
-
-        <Button
-            android:id="@+id/vehicleNavigationForward"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:background="@android:color/transparent"
-            android:drawableRight="@mipmap/ic_navigate_next_black_48dp"
-            android:drawableEnd="@mipmap/ic_navigate_next_black_48dp"
-            android:layout_weight="2"
-            android:onClick="fillUpViewNextVehicleClicked"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/vehicleInfoSectionHeader"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:id="@+id/defaultLinearLayout">
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/vehicleViewNavigation"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="fill_horizontal"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:weightSum="10">
+
+            <Button
+                android:id="@+id/vehicleNavigationBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@mipmap/ic_navigate_before_black_48dp"
+                android:drawableStart="@mipmap/ic_navigate_before_black_48dp"
+                android:onClick="fillUpViewPreviousVehicleClicked"
+                android:text="" />
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="7dp"
-                android:layout_marginRight="7dp"
-                android:layout_weight="0.89"
-                android:text="@string/odometer"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/editTextOdometer"
-                android:layout_width="200dp"
+                android:id="@+id/vehicleDisplayNameText"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
+                android:layout_weight="6"
                 android:ems="10"
-                android:gravity="center"
-                android:inputType="number"
-                android:maxLength="9" />
+                android:textAlignment="center"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/vehicleNavigationForward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@android:color/transparent"
+                android:drawableEnd="@mipmap/ic_navigate_next_black_48dp"
+                android:drawableRight="@mipmap/ic_navigate_next_black_48dp"
+                android:onClick="fillUpViewNextVehicleClicked"
+                android:text="" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/defaultLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:orientation="horizontal"
-            android:weightSum="1">
+            android:orientation="vertical"
+            android:padding="10dp">
+
 
             <TextView
-                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="7dp"
                 android:layout_marginRight="7dp"
-                android:layout_weight="0.89"
+                android:text="@string/odometer"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editTextOdometer"
+                android:layout_width="252dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="#659ddb"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="9" />
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="342dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginRight="7dp"
                 android:text="@string/totalCost"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/editTextTotalCost"
-                android:layout_width="200dp"
+                android:layout_width="252dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="end"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="numberDecimal"
-                android:maxLength="7" />
-        </LinearLayout>
+                android:inputType="number"
+                android:maxLength="9" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:orientation="horizontal"
-            android:weightSum="1">
 
             <Spinner
                 android:id="@+id/spinnerFuelMeasurement"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.94"
+                android:layout_width="wrap_content"
+                android:textSize="20sp"
+                android:layout_height="wrap_content"
                 android:spinnerMode="dropdown" />
 
             <EditText
-                android:layout_weight="1"
-                android:id="@+id/editTextPrice"
-                android:layout_width="200dp"
+                android:id="@+id/editTextFuelQuantity"
+                android:layout_width="252dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="end"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="numberDecimal"
-                android:maxLength="5" />
-        </LinearLayout>
+                android:inputType="number"
+                android:maxLength="9" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView3"
@@ -147,27 +122,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="7dp"
                 android:layout_marginRight="7dp"
-                android:layout_weight="0.89"
                 android:text="@string/fuelPrice"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextFuelQuantity"
-                android:layout_width="180dp"
+                android:id="@+id/editTextFuelPrice"
+                android:layout_width="252dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="end"
                 android:layout_weight="1"
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="numberDecimal"
                 android:maxLength="5" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView4"
@@ -181,69 +149,78 @@
                 android:textSize="20sp" />
 
             <Button
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:id="@+id/dateButton"
+                android:layout_width="252dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:ems="10"
+                android:gravity="center"
                 android:onClick="dateButtonClicked"
                 android:text="@string/today" />
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_weight="0.78"
+                    android:text="@string/missedPreviousFillUp"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/missedPreviousFillUpCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayoutDateSelector"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:orientation="horizontal"
-            android:weightSum="1">
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="7dp"
-                android:layout_marginRight="7dp"
-                android:layout_weight="0.78"
-                android:text="@string/missedPreviousFillUp"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:id="@+id/linearLayoutDateSelector"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
-        <DatePicker
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:datePickerMode="spinner"
-            android:calendarViewShown="false"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:weightSum="2">
-            <Button
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/Confirm"/>
-            <Button
-                android:layout_weight="1"
+            <DatePicker
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Cancel"/>
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:onClick="calendarDateConfirmation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Confirm" />
+
+                <Button
+                    android:onClick="calendarCancelClicked"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Cancel" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </ScrollView>

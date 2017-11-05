@@ -17,7 +17,7 @@ class DatabaseMain extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         final String queryCreateTableVehicle = "CREATE TABLE vehicle (_vehicleID INTEGER PRIMARY KEY, nickName TEXT UNIQUE, make TEXT, model TEXT, year TEXT, odometerUnits TEXT, defaultFuelUnits TEXT);";
         db.execSQL(queryCreateTableVehicle);
-        final String queryCreateTableFillUp = "CREATE TABLE FILL_UP (_fillUpID INTEGER PRIMARY KEY, _vehicleID INTEGER, missing_previous_fill INTEGER DEFAULT 0, fuel_quantity REAL, price REAL, date TEXT, odometer INTEGER, outdated INTEGER DEFAULT 0, parentID INTEGER UNIQUE, FOREIGN KEY (_vehicleID) REFERENCES vehicle(_id));";
+        final String queryCreateTableFillUp = "CREATE TABLE FILL_UP (_fillUpID INTEGER PRIMARY KEY, _vehicleID INTEGER, missing_previous_fill INTEGER DEFAULT 0, fuel_quantity REAL, price REAL, date TEXT, odometer INTEGER, outdated INTEGER DEFAULT 0, childID INTEGER, FOREIGN KEY (_vehicleID) REFERENCES vehicle(_id));";
         db.execSQL(queryCreateTableFillUp);
     }
 
